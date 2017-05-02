@@ -2,14 +2,9 @@ require 'sqlite3'
 
 db = SQLite3::Database.new 'file.db'
 
-result = db.execute <<-SQL
-  CREATE TABLE statuts (
-    name VARCHAR(30)
-);
-SQL
+data = ARGV[0]
 
-db.execute('INSERT INTO statuts (name) VALUES ("coucou");')
-
+db.execute("INSERT INTO statuts (name) VALUES (?)", data)
 
 db.execute 'SELECT * FROM statuts' do |row|
   p row
