@@ -1,4 +1,5 @@
 require 'sqlite3'
+require 'sinatra'
 
 db = SQLite3::Database.new 'file.db'
 
