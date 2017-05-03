@@ -1,22 +1,10 @@
 require 'rubygems'
 require 'sinatra'
-require 'active_record'
+require 'sqlite3'
 
-ActiveRecord::Base.establish_connection(
-  :adapter => 'sqlite3',
-  :database =>  'file.db'
-)
-
-class Statut < ActiveRecord::Base
-end
-
+db = SQLite3::Database.new 'file.db'
 
 get '/' do
-  @statuts = Statut.all()
+  @statuts = db.execute 'SELECT * FROM statuts ' 
     erb :index
 end
-
-
-# get '/' do
-#     erb :index
-# end

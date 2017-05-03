@@ -1,4 +1,5 @@
 <% @statuts.each do |statut| %>
-  <h1><%= statut.author %></h1>
-  <p><%= statut.content %></p>
+  <h1><%= statut[0] %></h1>
+  <p><%= statut[1] %></p>
+  <p><%= statut[2] %></p>
 <% end %>
