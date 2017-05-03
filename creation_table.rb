@@ -4,11 +4,8 @@ db = SQLite3::Database.new 'file.db'
 
 db.execute <<-SQL
   CREATE TABLE statuts (
-    name VARCHAR(30),
+    author VARCHAR(30),
+    content VARCHAR(140),
     date_statuts DATE
 );
 SQL
-
-
-
-
