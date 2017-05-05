@@ -9,14 +9,16 @@ get '/' do
 end
 
 post '/statuts' do
-	author = params["author"]
-	content = params["content"]
-	db.execute("INSERT INTO statuts (author, content, date_statuts) VALUES (?, ?,CURRENT_TIMESTAMP)", author, content)
+	db.execute("INSERT INTO statuts (author, content, date_statuts) VALUES (?, ?,CURRENT_TIMESTAMP)", params["author"], params["content"])
 	redirect to ('/statuts')
 end
 
 get '/statuts' do
 	@authors = db.execute 'SELECT author FROM statuts'
-	@statuts = db.execute("SELECT * FROM statuts WHERE author = ?", params["author"])
+	if params["author"] == nil
+		@statuts = db.execute 'SELECT * FROM statuts'
+	else
+		@statuts = db.execute("SELECT * FROM statuts WHERE author = ?", params["author"])
+	end
     erb :index
 end

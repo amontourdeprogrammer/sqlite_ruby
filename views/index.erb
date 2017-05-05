@@ -1,10 +1,10 @@
-<form>
-	<select name="author">
+<form class="form-inline">
+	<select name="author" class="form-control">
 		<% @authors.each do |author| %>
 			<option ><%= author.first %></option>
 		<% end %>
 	</select>
-	<button type="submit">valider</button>
+	<button type="submit" class="btn btn-primary">valider</button>
 </form>
 
 <% @statuts.each do |statut| %>
