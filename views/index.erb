@@ -1,6 +1,6 @@
 <form class="form-inline">
 	<select name="author" class="form-control">
-		<% @authors.each do |author| %>
+		<% @authors.uniq.each do |author| %>
 			<option ><%= author.first %></option>
 		<% end %>
 	</select>
