@@ -16,6 +16,7 @@ post '/statuts' do
 end
 
 get '/statuts' do
-  @statuts = db.execute 'SELECT * FROM statuts'
+	@authors = db.execute 'SELECT author FROM statuts'
+	@statuts = db.execute("SELECT * FROM statuts WHERE author = ?", params["author"])
     erb :index
 end
